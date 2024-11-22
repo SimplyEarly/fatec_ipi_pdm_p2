@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Dimensions, StyleSheet, Text, View, Pressable, Image } from 'react-native';
 
 const { height } = Dimensions.get('window');
 const altura_img = 200;
 
 const App = () => {
+  const [images, setImages] = useState([]);
+
+  const pegarImagemGato = async () => {
+    try {
+      const response = await fetch(
+        'https://api.thecatapi.com/v1/images/search?limit=5',
+         {
+            headers: {
+              'x-api-key': 'live_SdhikPwmI8pDfBMqQ4yaXMipQBl16e3nNTbC1XzPEVyCvqDFiMgOgHaBRVoKLLbW'
+            },
+        },
+      );
+      
+      const data = await response.json();
+      setImages(data);
+    } catch (error) {
+      console.error('Erro ao buscar imagens:', error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Image
