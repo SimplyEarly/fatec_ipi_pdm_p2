@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Dimensions, StyleSheet, Text, View, Pressable, Image, ScrollView } from 'react-native';
 
 const { height } = Dimensions.get('window');
-const altura_img = 200;
+const altura_img = 178;
 
 const App = () => {
   const [images, setImages] = useState([]);
@@ -45,10 +45,10 @@ const App = () => {
             <View key={index} style={styles.polaroidContainer}>
               <Image
                 source={{ uri: image['url'] }}
-                style={styles.catImage}
+                style={styles.imagemGato}
                 resizeMode="cover"
               />
-              <Text style={styles.caption}>
+              <Text style={styles.legenda}>
                 Gato {index + 1} 😼
               </Text>
             </View>
@@ -103,6 +103,8 @@ const styles = StyleSheet.create({
   },
   imageGrid: {
     justifyContent: 'space-around',
+    alignItems: 'center', 
+    paddingHorizontal: 85, 
   },
   polaroidContainer: {
     width: 220,
@@ -110,13 +112,20 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: 'center',
     backgroundColor: '#fff',
+    borderRadius: 10,
+    shadowColor: 'orchid',
+    shadowOffset: { width: 5, height: 5 },
+    shadowOpacity: 10,
+    shadowRadius: 10,
+    elevation: 15,
+    padding: 10,
   },
-  catImage: {
+  imagemGato: {
     width: 180,
     height: 180,
     borderRadius: 5,
   },
-  caption: {
+  legenda: {
     marginTop: 5,
     fontSize: 15,
     textAlign: 'center',
